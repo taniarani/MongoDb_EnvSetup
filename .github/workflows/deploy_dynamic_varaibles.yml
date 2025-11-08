@@ -8,15 +8,12 @@ env:  #available in all jobs
   MONGODB_DB_NAME: Tania-db-demo
 jobs:
   test:
-    environment:
+    env:
       MONGODB_CLUSTER_ADDRESS: cluster0.maecfnf.mongodb.net
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-    # env: # for using secrets
-    #   MONGODB_CLUSTER_ADDRESS: cluster0.maecfnf.mongodb.net
-    #   MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-    #   MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
+    # If you want to parameterize later, you can add inputs to workflow_dispatch and reference via ${{ inputs.var_name }}
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
